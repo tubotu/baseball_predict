@@ -1,0 +1,164 @@
+url: source page of crawling
+date: the day the match played
+team: indicates which team is handling the information in this column
+opponent: opponent in the match
+place: where the match took place
+home: whether the match is a home game for the team
+runs: scores earned by the team
+opponent_runs: scores earned by the opponent
+victory: whether the team won
+hits: number of hits for the team
+errors: number of errors for the team
+game_info: information of the match
+batter1_name: leadoff hitter's name
+batter1_url: url of leadoff hitter's information
+batter1_at_bat: number of at-bat of leadoff hitter
+batter1_hit: number of hits of leadoff hitter
+batter1_two_hit: number of two-base hits of leadoff hitter
+batter1_three_hit: number of three-base hits of leadoff hitter
+batter1_homerun: number of homerun of leadoff hitter
+batter1_strikeout: number of strike-out of leadoff hitter
+batter1_four_balls: number of four-balls of leadoff hitter
+batter1_dead_ball: number of dead-ball of leadoff hitter
+batter1_rbi: number of runs-batted-in of leadoff hitter
+batter1_steal: number of steal of leadoff hitter
+batter1_position: the defence position of leadoff hitter
+batter2_name: second hitter's name
+batter2_url
+batter2_at_bat
+batter2_hit
+batter2_two_hit
+batter2_three_hit
+batter2_homerun
+batter2_strikeout
+batter2_four_balls
+batter2_dead_ball
+batter2_rbi
+batter2_steal
+batter2_position
+batter3_name
+batter3_url
+batter3_at_bat
+batter3_hit
+batter3_two_hit
+batter3_three_hit
+batter3_homerun
+batter3_strikeout
+batter3_four_balls
+batter3_dead_ball
+batter3_rbi
+batter3_steal
+batter3_position
+batter4_name
+batter4_url
+batter4_at_bat
+batter4_hit
+batter4_two_hit
+batter4_three_hit
+batter4_homerun
+batter4_strikeout
+batter4_four_balls
+batter4_dead_ball
+batter4_rbi
+batter4_steal
+batter4_position
+batter5_name
+batter5_url
+batter5_at_bat
+batter5_hit
+batter5_two_hit
+batter5_three_hit
+batter5_homerun
+batter5_strikeout
+batter5_four_balls
+batter5_dead_ball
+batter5_rbi
+batter5_steal
+batter5_position
+batter6_name
+batter6_url
+batter6_at_bat
+batter6_hit
+batter6_two_hit
+batter6_three_hit
+batter6_homerun
+batter6_strikeout
+batter6_four_balls
+batter6_dead_ball
+batter6_rbi
+batter6_steal
+batter6_position
+batter7_name
+batter7_url
+batter7_at_bat
+batter7_hit
+batter7_two_hit
+batter7_three_hit
+batter7_homerun
+batter7_steal
+batter7_strikeout
+batter7_four_balls
+batter7_rbi
+batter9_run
+batter7_dead_ball
+batter8_name
+batter8_url
+batter8_at_bat
+batter8_hit
+batter8_two_hit
+batter8_three_hit
+batter8_homerun
+batter8_steal
+batter8_strikeout
+batter8_four_balls
+batter8_rbi
+batter8_dead_ball
+batter9_name
+batter9_url
+batter9_at_bat
+batter9_hit
+batter9_two_hit
+batter9_three_hit
+batter9_homerun
+batter9_strikeout
+batter9_four_balls
+batter9_dead_ball
+batter9_rbi
+batter9_steal
+batter9_position
+other_batters_at_bat: sum of number of at-bat of others
+other_batters_hit
+other_batters_steal
+other_batters_strikeout
+other_batters_two_hit
+other_batters_three_hit
+other_batters_homerun
+other_batters_four_balls
+other_batters_dead_ball
+st_name: starting pitcher's name
+st_url: url of the information of starting pitcher
+st_pitches: pitching number of starting pitcher
+st_batters: number of batters played
+st_times: number of innings pitched
+st_hits: number of hits allowed by a starting pitcher
+st_homerun: number of homeruns allowed by a starting pitcher
+st_four_balls: number of base on balls by a starting pitcher
+st_dead_ball: number of dead-balls by a starting pitcher
+st_strikeout: number of strike_outs by a starting pitcher
+st_wild_pitches: number of wild-pitches by a starting pitcher
+st_boke: number of bokes by a starting pitcher
+st_runs: number of losses by a starting pitcher
+st_responsible_runs: number of responsible-losses by a starting pitcher
+re_pitches: sum of pitching number of relief pitchers
+re_batters
+re_times
+re_times_decimal
+re_hits
+re_homerun
+re_four_balls
+re_dead_ball
+re_strikeout
+re_wild_pitches
+re_boke
+re_runs
+re_responsible_runs
