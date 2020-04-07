@@ -9,7 +9,7 @@ from tqdm import tqdm
 BASE_URL = 'http://npb.jp'
 DETAIL_URL = 'box.html'
 DETAIL_URL_2 = '/games/'
-YEARS = ["2016"]
+YEARS = ["2016","2017"]
 DETAIL_URL_3 = '/schedule_'
 MONTHS = ["03", "04", "05", "06", "07", "08", "09", "10"]
 DETAIL_URL_4 = '_detail.html'
@@ -18,7 +18,7 @@ def make_soup(url: str):
   """
   Get soup object from the specified url.
   """
-  sleep_time = 2
+  sleep_time = 3
   time.sleep(sleep_time)
   res = requests.get(url)
   soup = BeautifulSoup(res.content, 'html.parser')
@@ -140,6 +140,7 @@ def soup_to_dataframe(url, soup, path):
     
     re_columns = ['re_pitches', 're_batters', 're_times', 're_times_decimal', 're_hits', 're_homerun', 're_four_balls'
     , 're_dead_ball', 're_strikeout', 're_wild_pitches', 're_boke', 're_runs', 're_responsible_runs']
+    result_dict[home_or_away + 're_pitchers'] = len(pitcher_all_result[2::2])
     for re_column in re_columns:
       result_dict[home_or_away + re_column] = 0
     for relief_pitchers_result in pitcher_all_result[2::2]:
