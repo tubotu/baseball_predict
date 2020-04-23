@@ -9,7 +9,7 @@ from tqdm import tqdm
 BASE_URL = 'http://npb.jp'
 DETAIL_URL = 'box.html'
 DETAIL_URL_2 = '/games/'
-YEARS = ["2016","2017"]
+YEARS = ["2017"]
 DETAIL_URL_3 = '/schedule_'
 MONTHS = ["03", "04", "05", "06", "07", "08", "09", "10"]
 DETAIL_URL_4 = '_detail.html'
@@ -18,7 +18,7 @@ def make_soup(url: str):
   """
   Get soup object from the specified url.
   """
-  sleep_time = 3
+  sleep_time = 2
   time.sleep(sleep_time)
   res = requests.get(url)
   soup = BeautifulSoup(res.content, 'html.parser')
@@ -43,9 +43,9 @@ def soup_to_dataframe(url, soup, path):
   away_team = soup.find("tr", class_="top")
   result_dict["away_team"] = away_team.find("span").text
   result_dict["place"] = game_tit.find("span", class_="place").text
-  result_dict["runs"] = home_team.find("td", class_="total-1").text
+  result_dict["home_runs"] = home_team.find("td", class_="total-1").text
   result_dict["away_runs"] = away_team.find("td", class_="total-1").text
-  result_dict["home_victory"] = 1 if result_dict["runs"] > result_dict["away_runs"] else 0
+  result_dict["home_victory"] = 1 if int(result_dict["home_runs"]) > int(result_dict["away_runs"]) else 0
   result_dict["home_hits"] = home_team.find_all("td", class_="total-2")[0].text
   result_dict["away_hits"] = away_team.find_all("td", class_="total-2")[0].text
   result_dict["home_errors"] = home_team.find_all("td", class_="total-2")[1].text
@@ -58,23 +58,23 @@ def soup_to_dataframe(url, soup, path):
       batter_all_result = soup.find_all("div", class_="scroll_wrapper table_score table_batter")[0].find("tbody").find_all("tr")
     batters_columns_list = [
       ['batter1_name', 'batter1_url', 'batter1_at_bat', 'batter1_hit', 'batter1_two_hit', 'batter1_three_hit', 'batter1_homerun'
-      , 'batter1_rbi', 'batter1_steal', 'batter1_strikeout', 'batter1_four_balls', 'batter1_dead_ball', 'batter1_position']
+      , 'batter1_rbi', 'batter1_steal', 'batter1_strikeout', 'batter1_four_balls', 'batter1_dead_ball', 'batter1_sacrifice_hit', 'batter1_position']
       , ['batter2_name', 'batter2_url', 'batter2_at_bat', 'batter2_hit', 'batter2_two_hit', 'batter2_three_hit', 'batter2_homerun'
-      , 'batter2_rbi', 'batter2_steal', 'batter2_strikeout', 'batter2_four_balls', 'batter2_dead_ball', 'batter2_position']
+      , 'batter2_rbi', 'batter2_steal', 'batter2_strikeout', 'batter2_four_balls', 'batter2_dead_ball', 'batter2_sacrifice_hit', 'batter2_position']
       , ['batter3_name', 'batter3_url', 'batter3_at_bat', 'batter3_hit', 'batter3_two_hit', 'batter3_three_hit', 'batter3_homerun'
-      , 'batter3_rbi', 'batter3_steal', 'batter3_strikeout', 'batter3_four_balls', 'batter3_dead_ball', 'batter3_position']
+      , 'batter3_rbi', 'batter3_steal', 'batter3_strikeout', 'batter3_four_balls', 'batter3_dead_ball', 'batter3_sacrifice_hit', 'batter3_position']
       , ['batter4_name', 'batter4_url', 'batter4_at_bat', 'batter4_hit', 'batter4_two_hit', 'batter4_three_hit', 'batter4_homerun'
-      , 'batter4_rbi', 'batter4_steal', 'batter4_strikeout', 'batter4_four_balls', 'batter4_dead_ball', 'batter4_position']
+      , 'batter4_rbi', 'batter4_steal', 'batter4_strikeout', 'batter4_four_balls', 'batter4_dead_ball', 'batter4_sacrifice_hit', 'batter4_position']
       , ['batter5_name', 'batter5_url', 'batter5_at_bat', 'batter5_hit', 'batter5_two_hit', 'batter5_three_hit', 'batter5_homerun'
-      , 'batter5_rbi', 'batter5_steal', 'batter5_strikeout', 'batter5_four_balls', 'batter5_dead_ball', 'batter5_position']
+      , 'batter5_rbi', 'batter5_steal', 'batter5_strikeout', 'batter5_four_balls', 'batter5_dead_ball', 'batter5_sacrifice_hit', 'batter5_position']
       , ['batter6_name', 'batter6_url', 'batter6_at_bat', 'batter6_hit', 'batter6_two_hit', 'batter6_three_hit', 'batter6_homerun'
-      , 'batter6_rbi', 'batter6_steal', 'batter6_strikeout', 'batter6_four_balls', 'batter6_dead_ball', 'batter6_position']
+      , 'batter6_rbi', 'batter6_steal', 'batter6_strikeout', 'batter6_four_balls', 'batter6_dead_ball', 'batter6_sacrifice_hit', 'batter6_position']
       , ['batter7_name', 'batter7_url', 'batter7_at_bat', 'batter7_hit', 'batter7_two_hit', 'batter7_three_hit', 'batter7_homerun'
-      , 'batter7_rbi', 'batter7_steal', 'batter7_strikeout', 'batter7_four_balls', 'batter7_dead_ball', 'batter7_position']
+      , 'batter7_rbi', 'batter7_steal', 'batter7_strikeout', 'batter7_four_balls', 'batter7_dead_ball', 'batter7_sacrifice_hit', 'batter7_position']
       , ['batter8_name', 'batter8_url', 'batter8_at_bat', 'batter8_hit', 'batter8_two_hit', 'batter8_three_hit', 'batter8_homerun'
-      , 'batter8_rbi', 'batter8_steal', 'batter8_strikeout', 'batter8_four_balls', 'batter8_dead_ball', 'batter8_position']
+      , 'batter8_rbi', 'batter8_steal', 'batter8_strikeout', 'batter8_four_balls', 'batter8_dead_ball', 'batter8_sacrifice_hit', 'batter8_position']
       , ['batter9_name', 'batter9_url', 'batter9_at_bat', 'batter9_hit', 'batter9_two_hit', 'batter9_three_hit', 'batter9_homerun'
-      , 'batter9_rbi', 'batter9_steal', 'batter9_strikeout', 'batter9_four_balls', 'batter9_dead_ball', 'batter9_position']
+      , 'batter9_rbi', 'batter9_steal', 'batter9_strikeout', 'batter9_four_balls', 'batter9_dead_ball', 'batter9_sacrifice_hit', 'batter9_position']
     ]
     batter_1_9_result = []
     batter_others_result = []
@@ -85,14 +85,14 @@ def soup_to_dataframe(url, soup, path):
       else:
         batter_others_result.append(batter_result)
 
-    atbat_aggregate_word_list = ["２", "３", "本", "三　振", "四　球", "死　球"]
+    atbat_aggregate_word_list = ["２", "３", "本", "三　振", "四　球", "死　球", "犠"]
     for batter_result, batter_columns in zip(batter_1_9_result, batters_columns_list):
       td_list = batter_result.find_all("td")
       result_dict[home_or_away + batter_columns[0]] = td_list[2].text
       result_dict[home_or_away + batter_columns[1]] = 'http://npb.jp' + td_list[2].a.get("href")
       result_dict[home_or_away + batter_columns[2]] = td_list[3].text
       result_dict[home_or_away + batter_columns[3]] = td_list[5].text
-      atbat_aggregate_list = [batter_columns[4], batter_columns[5], batter_columns[6], batter_columns[9], batter_columns[10], batter_columns[11]]
+      atbat_aggregate_list = [batter_columns[4], batter_columns[5], batter_columns[6], batter_columns[9], batter_columns[10], batter_columns[11], batter_columns[12]]
       for atbat_aggregate in atbat_aggregate_list:
         result_dict[home_or_away + atbat_aggregate] = 0
       for atbat_detail in td_list[8:]:
@@ -101,11 +101,11 @@ def soup_to_dataframe(url, soup, path):
             result_dict[home_or_away + atbat_aggregate] += 1
       result_dict[home_or_away + batter_columns[7]] = td_list[6].text
       result_dict[home_or_away + batter_columns[8]] = td_list[7].text
-      result_dict[home_or_away + batter_columns[12]] = td_list[1].text.replace('(','').replace(')','')
+      result_dict[home_or_away + batter_columns[13]] = td_list[1].text.replace('(','').replace(')','')
     
     atbat_aggregate_list = ['other_batters_at_bat', 'other_batters_hit', 'other_batters_steal', 'other_batters_strikeout']
     atbat_aggregate_list2 = ['other_batters_two_hit', 'other_batters_three_hit', 'other_batters_homerun'
-    , 'other_batters_strikeout', 'other_batters_four_balls', 'other_batters_dead_ball']
+    , 'other_batters_strikeout', 'other_batters_four_balls', 'other_batters_dead_ball', 'other_batters_sacrifice_hit']
     for atbat_aggregate in atbat_aggregate_list + atbat_aggregate_list2:
       result_dict[home_or_away + atbat_aggregate] = 0
     for batter_result in batter_others_result:
