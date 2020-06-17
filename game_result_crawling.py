@@ -9,7 +9,7 @@ from tqdm import tqdm
 BASE_URL = 'http://npb.jp'
 DETAIL_URL = 'box.html'
 DETAIL_URL_2 = '/games/'
-YEARS = ["2017"]
+YEARS = ["2016","2017"]
 DETAIL_URL_3 = '/schedule_'
 MONTHS = ["03", "04", "05", "06", "07", "08", "09", "10"]
 DETAIL_URL_4 = '_detail.html'
@@ -148,7 +148,12 @@ def soup_to_dataframe(url, soup, path):
       for re_column, relief_pitcher_result in zip(re_columns, relief_pitcher_result_list[2:]):
         if(re_column == 're_times'):
           tr = relief_pitcher_result.find("tr")
-          result_dict[home_or_away + re_column] = tr.find("th").text + tr.find("td").text
+          if '+' in tr.find("td").text:
+            result_dict[home_or_away + re_column] += float(tr.find("th").text)
+          else:
+            result_dict[home_or_away + re_column] += float(tr.find("th").text + tr.find("td").text)
+          if(result_dict[home_or_away + re_column] - int(result_dict[home_or_away + re_column] >= 0.3)):
+            result_dict[home_or_away + re_column] += 0.7
           continue 
         if(re_column == 're_times_decimal'):
           continue
