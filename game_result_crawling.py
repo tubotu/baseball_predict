@@ -9,9 +9,9 @@ from tqdm import tqdm
 BASE_URL = 'http://npb.jp'
 DETAIL_URL = 'box.html'
 DETAIL_URL_2 = '/games/'
-YEARS = ["2016","2017"]
+YEARS = ["2017"]
 DETAIL_URL_3 = '/schedule_'
-MONTHS = ["03", "04", "05", "06", "07", "08", "09", "10"]
+MONTHS = ["11"]
 DETAIL_URL_4 = '_detail.html'
 
 def make_soup(url: str):
@@ -152,7 +152,7 @@ def soup_to_dataframe(url, soup, path):
             result_dict[home_or_away + re_column] += float(tr.find("th").text)
           else:
             result_dict[home_or_away + re_column] += float(tr.find("th").text + tr.find("td").text)
-          if(result_dict[home_or_away + re_column] - int(result_dict[home_or_away + re_column] >= 0.3)):
+          if(result_dict[home_or_away + re_column] - int(result_dict[home_or_away + re_column]) >= 0.3):
             result_dict[home_or_away + re_column] += 0.7
           continue 
         if(re_column == 're_times_decimal'):
