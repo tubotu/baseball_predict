@@ -11,3 +11,6 @@ headerの説明に関してはheader_explanation.txtを参照。
 
 ## personal_achivements2.csv
 プレイヤーの個人成績に関するcsv。player_crawling.pyで取得。
+
+## Untitled.ipynb
+適当に分析しているnotebook。乱雑で成形されてないです、ごめんなさい。
