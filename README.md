@@ -14,3 +14,4 @@ headerの説明に関してはheader_explanation.txtを参照。
 
 ## Untitled.ipynb
 適当に分析しているnotebook。乱雑で成形されてないです、ごめんなさい。
+そもそもipynb投げてるのあかんのわかっているので近いうちに消してモジュールごとにちゃんと分けた.pyファイルにします。
